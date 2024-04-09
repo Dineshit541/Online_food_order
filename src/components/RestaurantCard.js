@@ -3,7 +3,7 @@ import { CDN_LINK } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resData.info;
-
+   
   return (
     <div className="m-4 p-4 w-52 bg-gray-100 rounded-md hover:bg-gray-300"> 
       <img

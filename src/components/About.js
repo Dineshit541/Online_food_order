@@ -1,6 +1,6 @@
-import React from "react";
-import User from "./User";
+import React, { useContext } from "react";
 import UserClass from "./UserClass";
+
 
 class About extends React.Component {
 
@@ -8,16 +8,12 @@ class About extends React.Component {
         super(props);
        
     }
-
-
-
     render(){
     
         return <>
-        <h2>About Us</h2>
-        <h2>This is online food delivery app devloped by Dinesh using ReactJs...!</h2>
-        <br />
+       <div>
         <UserClass name={"First"} />
+        </div> 
         </>
     }
 };
