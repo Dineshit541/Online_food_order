@@ -9,7 +9,7 @@ const Body = () => {
   const [filteredrestro, setFilteredRestro] = useState([]);
 
   const [restrosearch, setRestroSearch] = useState("");
-   const onlineStatus=useOnlineStatus();
+  const onlineStatus = useOnlineStatus();
   useEffect(() => {
     fetchData();
   }, []);
@@ -20,6 +20,7 @@ const Body = () => {
     );
 
     const json = await data.json();
+    console.log(json);
     setListOfResturant(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -27,25 +28,30 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-   
-  if(onlineStatus === false) {
-    return <h1>Looks like you're offline!! Please check your internet connection....</h1>
+
+  if (onlineStatus === false) {
+    return (
+      <h1>
+        Looks like you're offline!! Please check your internet connection....
+      </h1>
+    );
   }
-  console.log(listOfResturant)
+
   return listOfResturant === null ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="flex">
-        <div className="search m-4 p-4">
+      <div className="flex items-center flex-col mb-1 w-full">
+        <div className="mt-4 md:mt-3 md:mx-6 flex justify-center  w-full ">
           <input
+            className="w-5/12 px-4 py-2 border placeholder:text-gray-600 border-r-0 border-solid border-red-500 rounded-l-lg focus:outline-none"
+            placeholder="Search a restaurant"
             type="text"
-            className="border border-solid border-black"
             value={restrosearch}
             onChange={(e) => setRestroSearch(e.target.value)}
           />
           <button
-          className="px-4 bg-green-100 m-4"
+            className="bg-red-500 text-white ease-linear duration-200 hover:bg-green-800 px-4 py-2 rounded-r-lg"
             onClick={() => {
               const filtered = listOfResturant.filter((restro) =>
                 restro.info.name
@@ -58,29 +64,33 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="search m-4 p-4 flex items-center">
-        <button
-          className="px-4 bg-gray-100"
-          onClick={() => {
-            const filteredList = listOfResturant.filter(
-              (res) => res.info.avgRating > 4.5
-            );
-            setFilteredRestro(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+        <div className="my-6 mx-6 flex flex-wrap lg:justify-between w-[47%] sm:flex-col sm:items-center xl:flex-row" >
+        <div >
+          <button
+            className="px-8 py-2 bg-red-500 rounded-lg mr-2 sm:mb-4 xl:mb-0 hover:bg-green-700 text-white ease-linear duration-200"
+            onClick={() => {
+              const filteredList = listOfResturant.filter(
+                (res) => res.info.avgRating > 4.2
+              );
+              setFilteredRestro(filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+          </div>
         </div>
       </div>
-      <div className="flex flex-wrap">
-        {filteredrestro.map((res) => {
-          return (
-            <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
-              <RestaurantCard resData={res} />
-            </Link>
-          );
-        })}
-      </div>
+      {filteredrestro && (
+        <div className="flex flex-wrap justify-evenly">
+          {filteredrestro.map((res) => {
+            return (
+              <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
+                <RestaurantCard resData={res} />
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

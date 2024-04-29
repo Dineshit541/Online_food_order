@@ -11,11 +11,11 @@ const Header = () => {
   const cardItem=useSelector((store) =>store.cart.items)
   console.log(cardItem)
   return (
-    <div className="flex justify-between bg-pink-100">
+    <div className="flex justify-between shadow-lg ">
       <div className="logo-container">
         <img className="w-20 items-center" src={APP_LOGO} />
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center font-bold">
         <ul className="flex p-4 m-4">
           <li>Online Status: { onlineStatus ? '✅' : '❌'}</li>
           <li className="px-4">
@@ -28,9 +28,9 @@ const Header = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li  className="px-4 font-bold">
-          <Link to="/cart">Cart {cardItem.length} items </Link></li>
+          <Link to="/cart">🛒- {cardItem.length} items </Link></li>
           <button
-            className="btn-login"
+            className="btn-login font-bold"
             onClick={() => {
               setBtnNameReact("Logout");
             }}
