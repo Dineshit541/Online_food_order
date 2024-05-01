@@ -1,5 +1,5 @@
 {
-  "name": "Namaste-React",
+  "name": "Online-foodOrdering-app",
   "version": "0.1.0",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
