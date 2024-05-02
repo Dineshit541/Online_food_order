@@ -5,7 +5,6 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const [btnNameReact, setBtnNameReact] = useState("Login");
   const onlineStatus=useOnlineStatus();
 
   const cardItem=useSelector((store) =>store.cart.items)
@@ -29,14 +28,6 @@ const Header = () => {
           </li>
           <li  className="px-4 font-bold">
           <Link to="/cart">🛒- {cardItem.length} items </Link></li>
-          <button
-            className="btn-login font-bold"
-            onClick={() => {
-              setBtnNameReact("Logout");
-            }}
-          >
-            {btnNameReact}
-          </button>
         </ul>
       </div>
     </div>

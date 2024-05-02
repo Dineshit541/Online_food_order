@@ -51,7 +51,7 @@ const Body = () => {
             onChange={(e) => setRestroSearch(e.target.value)}
           />
           <button
-            className="bg-red-500 text-white ease-linear duration-200 hover:bg-green-800 px-4 py-2 rounded-r-lg"
+            className="bg-red-500 text-white ease-linear duration-200 hover:bg-gray-600 px-4 py-2 rounded-r-lg"
             onClick={() => {
               const filtered = listOfResturant.filter((restro) =>
                 restro.info.name
@@ -67,7 +67,7 @@ const Body = () => {
         <div className="my-6 mx-6 flex flex-wrap lg:justify-between w-[47%] sm:flex-col sm:items-center xl:flex-row" >
         <div >
           <button
-            className="px-8 py-2 bg-red-500 rounded-lg mr-2 sm:mb-4 xl:mb-0 hover:bg-green-700 text-white ease-linear duration-200"
+            className="px-8 py-2 bg-red-500 rounded-lg mr-2 sm:mb-4 xl:mb-0 hover:bg-gray-600 text-white ease-linear duration-200"
             onClick={() => {
               const filteredList = listOfResturant.filter(
                 (res) => res.info.avgRating > 4.2
